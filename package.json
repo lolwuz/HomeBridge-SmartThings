@@ -1,16 +1,16 @@
 {
   "private": true,
-  "displayName": "Plugin Name",
-  "name": "homebridge-plugin-name",
-  "version": "1.0.0",
-  "description": "A short description about what your plugin does.",
+  "displayName": "Samsung SmartThings",
+  "name": "homebridge-samsung-smartthings",
+  "version": "0.0.1",
+  "description": "Integrates the SmartThings Nodejs SDK into Homebridge.",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "git://github.com/USERNAME/GITHUB_PROJECT_NAME.git"
+    "url": "git://github.com/lolwuz/HomeBridge-SmartThings.git"
   },
   "bugs": {
-    "url": "https://github.com/USERNAME/GITHUB_PROJECT_NAME/issues"
+    "url": "https://github.com/lolwuz/HomeBridge-SmartThings/issues"
   },
   "engines": {
     "node": ">=14.18.1",
@@ -26,7 +26,10 @@
   "keywords": [
     "homebridge-plugin"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "@smartthings/smartapp": "^2.6.0",
+    "axios": "^0.21.4"
+  },
   "devDependencies": {
     "@types/node": "^16.10.9",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
