@@ -3,6 +3,7 @@ import { API, DynamicPlatformPlugin, Logger, PlatformAccessory, PlatformConfig, 
 import { PLATFORM_NAME, PLUGIN_NAME } from './settings';
 import { ExamplePlatformAccessory } from './platformAccessory';
 import axios from './samsung/axios';
+import Device from './types/device';
 
 
 /**
@@ -56,10 +57,19 @@ export class ExampleHomebridgePlatform implements DynamicPlatformPlugin {
     const { data } = await axios.get('/devices');
 
     // items
-    const { items } = data;
+    const { items, error } = data;
+
+    // samsung api error codes
+    if (error) {
+      this.log.warn(`${error.code}: ${error.message}`);
+
+      return;
+    }
 
     // loop over the discovered devices and register each one if it has not already been registered
-    for (const device of items) {
+    const dryers : Device[] = items.filter(item => item.deviceTypeName === 'Samsung OCF Dryer');
+
+    for (const device of dryers) {
 
       // generate a unique id for the accessory this should be generated from
       // something globally unique, but constant, for example, the device serial
